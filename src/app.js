@@ -1125,21 +1125,30 @@
                  *    this.btns - кнопки тут
                  */
             };
-            GameView.prototype.showLoading = function () {
-                /**
+           GameView.prototype.showLoading = function () {
+                /
                  * TODO: Task 9. Опишите доступность элементов при загрузке игры $container $error $loading
-                 */
-            };
+                 
+                utils.addClasses($containerGame, 'hidden')
+                utils.addClasses($error, 'hidden')
+                utils.removeClasses($loading, 'hidden')
             GameView.prototype.showError = function () {
-                /**
+                /
                  * TODO: Task 10. Опишите доступность элементов при загрузке игры $container $error $loading
-                 */
+                 
+                utils.addClasses($containerGame, 'hidden')
+                utils.addClasses($loading, 'hidden')
+                utils.removeClasses($error, 'hidden')
             };
             GameView.prototype.show = function () {
                 /**
                  * TODO: Task 11. Опишите доступность элементов при загрузке игры $container $error $loading
-                 */
+                 
+                utils.addClasses($loading, 'hidden')
+                utils.addClasses($error, 'hidden')
+                utils.removeClasses($containerGame, 'hidden')
             };
+
 
             return GameView;
         })();
