@@ -808,6 +808,10 @@
                 /**
                  * TODO Task 2. Опишите функцию которая задаст размеры игрового поля
                  */
+                $canvas.style.width = `${width}px`;
+                $canvas.style.height = `${height}px`;
+                $canvas.width = `${width}`;
+                $canvas.height = `${height}`;
                 return $canvas;
             }
             function drawMapField(canvas, map, width, height, cellSize) {
@@ -861,32 +865,71 @@
                  *              повешайте обработчики событий на кнопки
                  *              нажатия на кнопки это событие click
                  */
-                // var c = this.state.callbacks;
-                // c.captionChanged
-                // c.invalidGame
-                // c.mapChanged
-                // c.playerChanged
-                // c.statusChanged
-                // c.synced
-                // c.syncing
-                // c.teamCaptionChanged
-                // c.teamCoinsChanged
-                // c.teamLivesChanged
-                // c.teamPlayersChanged
-                // c.timerChanged
+                var c = this.state.callbacks;
+                c.captionChanged.add(function (name, status){
+                    this.setGameCaption(name, status);
+                }.bind(this));
+                c.invalidGame.add(function (){
+                    this.showError();
+                }.bind(this));
+                c.mapChanged.add(function (map){
+                    this.updateMap(map);
+                }.bind(this));
+                c.playerChanged.add(function (player){
+                    this.updatePlayer(player);
+                }.bind(this));
+                c.statusChanged.add(function (status){
+                    this.setButtons(status);
+                    this.toggleRotation(status);
+                }.bind(this));
+                c.synced.add(function (){
+                    this.show();
+                }.bind(this));
+                c.syncing.add(function (){
+                    this.showLoading();
+                }.bind(this));
+                c.teamCaptionChanged.add(function (team){
+                    this.updateTeamCaption(team);
+                }.bind(this));
+                c.teamCoinsChanged.add(function (team){
+                    this.updateTeamCoins(team);
+                }.bind(this));
+                c.teamLivesChanged
+                c.teamPlayersChanged.add(function (team){
+                    this.updateTeamLives(team);
+                }.bind(this));
+                c.timerChanged.add(function (){
+                    this.setTimer();
+                }.bind(this));
             };
             GameView.prototype.bindButtons = function () {
                 // TODO Task 3.1 повешайте обработчики событий
-                // var btns = this.btns;
-                // var $lastKey = -1;
-                // btns.$btnGameList.
-                // btns.$btnStart.
-                // btns.$btnConnect.
-                // btns.$btnConnectPolice.
-                // btns.$btnConnectThief.
-                // btns.$btnLeave.
-                // btns.$btnPause.
-                // btns.$btnCancel.
+                var btns = this.btns;
+                var $lastKey = -1;
+                btns.$btnGameList.click(function () {
+                    window.location.replace("index.html")
+                });
+                btns.$btnStart.click(function () {
+                    this.state.game.start();
+                }.bind(this));
+                btns.$btnConnect.click(function () {
+                    this.state.game.join(GameApi.GameTeamRole.random);
+                }.bind(this));
+                btns.$btnConnectPolice.click(function () {
+                    this.state.game.join(GameApi.GameTeamRole.police);
+                }.bind(this));
+                btns.$btnConnectThief.click(function () {
+                    this.state.game.join(GameApi.GameTeamRole.thief);
+                }.bind(this));
+                btns.$btnLeave.click(function () {
+                    this.state.game.leave();
+                }.bind(this));
+                btns.$btnPause.click(function () {
+                    this.state.game.pause();
+                }.bind(this));
+                btns.$btnCancel.click(function () {
+                    this.state.game.cancel();
+                }.bind(this))
                 $(window).on('keydown', function(event) {
                     if ($lastKey === event.keyCode) {
                         return;
@@ -1224,6 +1267,7 @@
                 /**
                  * TODO: Task 11. Опишите доступность элементов при загрузке игры $container $error $loading
                  */
+                utils.addClass
             };
 
             return GameView;
