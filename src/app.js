@@ -758,50 +758,50 @@
                  *  можно использовать $('selector')
                  */
                 return {
-                    // $gameCaption: ,
-                    // $switchTimer: ,
-                    // team1: {
-                    //     $container: ,
-                    //     $caption: ,
-                    //     $players: ,
-                    //     $lives: ,
-                    //     $coins:
-                    // },
-                    // team2: {
-                    //     $container: ,
-                    //     $caption: ,
-                    //     $players: ,
-                    //     $lives: ,
-                    //     $coins:
-                    // },
-                    // mapBuffer: null,
-                    // $mapCanvas: ,
-                    // mapCellSize: 25
+                    $gameCaption: $('gameCaption'),
+                    $switchTimer: $('switchTimer'),
+                    team1: {
+                         $container: $('container'),
+                         $caption: $('caption'),
+                         $players: $('players'),
+                         $lives: $('lives'),
+                         $coins: $('coins')
+                     },
+                    team2: {
+                         $container: $('container'),
+                         $caption: $('caption'),
+                         $players: $('players'),
+                         $lives: $('lives'),
+                         $coins: $('coins')
+                     },
+                    mapBuffer: null,
+                    $mapCanvas:  $('mapCanvas'),
+                    mapCellSize: 25
                 };
             }
             function getButtons() {
                 // TODO Task1.2 Объявление переменных и их связка с DOM
                 return {
-                    // $btnGameList:,
-                    // $btnStart:,
-                    // $btnConnect:,
-                    // $btnConnectPolice:,
-                    // $btnConnectThief:,
-                    // $btnLeave:,
-                    // $btnPause:,
-                    // $btnCancel:
+                     $btnGameList: $('btnGameList'),
+                     $btnStart: $('btnStart'),
+                     $btnConnect: $('btnConnect'),
+                     $btnConnectPolice: $('btnConnectPolice'),
+                     $btnConnectThief: $('btnConnectThief'),
+                     $btnLeave: $('btnLeave'),
+                     $btnPause: $('btnPause'),
+                     $btnCancel: $('btnCancel')
                 };
             }
             function getImages() {
                 // TODO Task1.3 Объявление переменных и их связка с DOM
                 return {
-                    // imgHeart: ,
-                    // imgCoin: ,
-                    // imgPolice: ,
-                    // imgPoliceSelf: ,
-                    // imgThief: ,
-                    // imgThiefSelf: ,
-                    // imgSwitch:
+                     imgHeart: $('img_heart'),
+                     imgCoin: $('img_coin'),
+                     imgPolice: $('img_police'),
+                     imgPoliceSelf: $('img_police_self'),
+                     imgThief: $('img_thief'),
+                     imgThiefSelf: $('img_thief_self'),
+                     imgSwitch: $('img_switch')
                 };
             }
             function setMapCanvasSizing($canvas, width, height) {
@@ -1010,7 +1010,7 @@
                 this.game.$gameCaption
                     .empty()
                     .append($(app.utils.t(
-                        "<div class='game-caption-name'>{name} <span class='game-caption-status game-caption-status-{status}'>{statusName}</span></div>",
+                        "<div id='gameCaption'>{name} <span class='gameStatus gameStatus-{status}'>{statusName}</span></div>",    
                         {name: name, status: status, statusName: app.utils.getStatusName(status)})));
             };
             GameView.prototype.setTimer = function (data) {
@@ -1037,11 +1037,11 @@
                  * TODO: Task 6. Поменяйте под вашу вёрстку
                  */
                 return $(app.utils.t(
-                    "<div id='player{playerId}' class='game-player game-player-status-{status}'>" +
-                        "<span class='game-player-name'>{name}</span>" +
-                        " [<span class='game-player-coins'>{coins}</span>;" +
-                        "<span class='game-player-lives'>{lives}</span>;" +
-                        "<span class='game-player-deaths'>{deaths}</span>]" +
+                    "<div id='player{playerId}' class='game-player game-player-status-{status}'>" +   
+                        "<span class='game-player-name'>{name}</span>" +                              
+                        " [<span class='game-player-coins'>{coins}</span>;" +                         
+                        "<span class='game-player-lives'>{lives}</span>;" +                           
+                        "<span class='game-player-deaths'>{deaths}</span>]" +                         
                     "</div>", {
                     playerId: player.id,
                     status: status,
