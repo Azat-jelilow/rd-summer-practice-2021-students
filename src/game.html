@@ -17,28 +17,33 @@
 <body>
 
 <!-- TODO: Task 0. Построить вёрстку приложения по макету используя для сетки bootstrap -->
-<div id="header-bar">
+<div id="gameCaption">
+    <h1>Полицейские и Мошенники</h1>
+</div>
+<div id="switchTimer">
     &nbsp;
 </div>
 <div id="gameground">
-    <div class="col">
-        <p>Команда 1</p>
-        <p>Жизни: <span id="health"> 0 </span></p>
-        <p>Монеты: <span id="coin"> 0 </span></p>
+    <div id="team1" class="col">
+        <p id="caption">Команда 1</p>
+        <p id="players">Игроки</p>
+        <p>Жизни: <span id="lives"> 0 </span></p>
+        <p>Монеты: <span id="coins"> 0 </span></p>
     </div>
-    <div id="gameground-center" class="gameground">
+    <div id="mapCanvas" class="gameground">
         <h1>00:00</h1>
         <img src="map.jpg" height="100%" width="100%">
     </div>
-    <div class="col">
-        <p>Команда 2</p>
-        <p>Жизни: <span id="health"> 0 </span></p>
-        <p>Монеты: <span id="coin"> 0 </span></p>
+    <div id="team2" class="col">
+        <p id="caption"> Команда 2</p>
+        <p id="players">Игроки</p>
+        <p>Жизни: <span id="lives"> 0 </span></p>
+        <p>Монеты: <span id="coins"> 0 </span></p>
     </div>
 
 </div>
 	 
-<!-- <div class="hidden">
+<div class="hidden">
     <img id="img_heart"
          src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJzdmdfaGVhcnQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9
 yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIH
@@ -111,7 +116,7 @@ IiAvPgo8bGluZSB4MT0iMTEiIHkxPSI4IiB4Mj0iNyIgeTI9IjQiIC8+CjxsaW5lIHgxPSIxOCI
 geTE9IjMiIHgyPSIxOCIgeTI9IjIyIiAvPgo8bGluZSB4MT0iMTQiIHkxPSIxNyIgeDI9IjE4Ii
 B5Mj0iMjEiIC8+CjxsaW5lIHgxPSIyMiIgeTE9IjE3IiB4Mj0iMTgiIHkyPSIyMSIgLz4KPC9nP
 go8L3N2Zz4="/>
-</div>	 -->
+</div>	 
 <!--  TODO: Раскомментировать при начале работы с сервером -->
 <!--<script src="app.js"></script>-->
 <!--<script>-->
@@ -128,14 +133,14 @@ go8L3N2Zz4="/>
 
 <!--</script>-->
 <div id="сontrolPanel">
-    <button class = "button">К списку игр</button>
-    <button class = "button">Начать игру</button>
-    <button class = "button">Подключиться к игре (случайно)</button>
-    <button class = "button">Подключиться к полиции</button>
-    <button class = "button">Подключиться к мошенникам</button>
-    <button class = "button">Покинуть игру</button>
-    <button class = "button">Паузу</button>
-    <button id = "exit" class = "button">Прервать игру</button>
+    <button id="btnGameList" class = "button">К списку игр</button>
+    <button id="btnStart" class = "button">Начать игру</button>
+    <button id="btnConnect" class = "button">Подключиться к игре (случайно)</button>
+    <button id="btnConnectPolice" class = "button">Подключиться к полиции</button>
+    <button id="btnConnectThief" class = "button">Подключиться к мошенникам</button>
+    <button id="btnLeave" class = "button">Покинуть игру</button>
+    <button id="btnPause" class = "button">Пауза</button>
+    <button id ="btnCancel" class = "button">Прервать игру</button>
 </div>
 </body>
 </html>
